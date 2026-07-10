@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      # This project has a helper script, but running standard clean package works great for testing
+      - mvn clean package -F build-pom.xml || mvn clean package
+artifacts:
+  files:
+    - "target/*.jar"
