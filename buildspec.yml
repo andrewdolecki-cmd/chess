@@ -1,10 +1,14 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: corretto21
   build:
     commands:
-      # This project has a helper script, but running standard clean package works great for testing
-      - mvn clean package -F build-pom.xml || mvn clean package
+      - echo "Building self-contained Fat JAR from our custom repository..."
+      - mvn clean package -DskipTests
 artifacts:
   files:
-    - "target/*.jar"
+    - target/chess-1.0-SNAPSHOT.jar
+  discard-paths: yes
