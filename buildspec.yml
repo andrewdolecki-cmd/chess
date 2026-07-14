@@ -4,10 +4,16 @@ phases:
   install:
     runtime-versions:
       java: corretto21
+  pre_build:
+    commands:
+      - echo "Entering Pre-build phase!"
   build:
     commands:
       - echo "Building self-contained Fat JAR from our custom repository..."
       - mvn clean package -DskipTests
+  post_build:
+    commands:
+      - echo "Entering Post-build phase!"
 artifacts:
   files:
     - target/chess-1.0-SNAPSHOT.jar
